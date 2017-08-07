@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="socket.io/socket.io.js"></script>
+        <script>
+            window.onload = function() {
+                var socket = io.connect();
+
+                socket.on("channel", function(data) {
+                    // alert(data);
+                    var chatPanel = document.getElementById("chatPanel");
+                    chatPanel.value += data + "\n";
+                    
+
+                });
+
+                document.getElementById("btnSend").onclick = function() {
+                    var message = document.getElementById("txtMessage").value;
+                    socket.emit("channel", message);
+                    document.getElementById("txtMessage").value = "";
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div>
+        <label for="txtMessage" title="Channel Message">
+        <input type="text" id="txtMessage">
+        <input type="button" id="btnSend" value="Send">
+        </div>
+
+        <div>
+        <textarea id="chatPanel" cols="80" rows="15"></textarea>
+        </div>
+    </body>
+</html>

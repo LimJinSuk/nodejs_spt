@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= message %></h1>
+        
+        <% if (typeof(list) != 'undefined') { %>
+            <ul>
+            <% for (var i = 0; i < list.length; i++) { %>
+                <li><%= list[i] %>
+            <% } %>
+            </ul>
+        <% } %>
+    </body>
+</html>
